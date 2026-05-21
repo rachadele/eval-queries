@@ -1,0 +1,9 @@
+cell_type	subclass
+Excitatory	Glutamatergic
+Endo	Endothelial
+Inhibitory	GABAergic
+Oligo	Oligodendrocyte
+Astro	Astrocyte
+Microglia	Microglia
+NF Oligo	Oligodendrocyte
+OPC	OPC

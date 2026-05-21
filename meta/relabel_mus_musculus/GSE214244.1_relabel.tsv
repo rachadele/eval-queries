@@ -1,0 +1,12 @@
+cell_type	subclass
+Exc. neuron	Glutamatergic
+Astro1	Astrocyte
+Microglia	Microglia
+Interneuron	GABAergic
+Astro2	Astrocyte
+Olig1	Oligodendrocyte
+Olig2	Oligodendrocyte
+OPC	OPC
+Endothelial	Endothelial
+Pericyte	Pericyte
+Leptomeningeal	VLMC

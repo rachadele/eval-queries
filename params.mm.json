@@ -1,0 +1,28 @@
+{
+  "organism": "mus_musculus",
+  "census_version": "2025-01-30",
+
+  "queries_adata": "/space/grp/rschwartz/rschwartz/get_gemma_data.nf/study_names_mouse.txt_author_true_process_samples_true/h5ad/*/*.h5ad",
+  "relabel_q": "/space/grp/rschwartz/rschwartz/eval-queries/meta/relabel_mus_musculus/*_relabel.tsv",
+  "ref_region_mapping": "/space/grp/rschwartz/rschwartz/eval-queries/meta/query_region_mapping.yaml",
+
+  "subsample_ref": 500,
+  "ref_keys": ["subclass", "class", "family", "global"],
+
+  "cutoff": 0,
+  "use_gap": true,
+  "nmads": 5,
+  "remove_unknown": true,
+  "seed": 42,
+
+  "normalization_method": "SCT",
+  "nfeatures": 2000,
+  "integration_method": "pcaproject",
+  "dims": 50,
+  "max_features": 200,
+  "k_anchor": 10,
+  "k_score": 30,
+  "k_weight": 50,
+
+  "gene_mapping": "/space/grp/rschwartz/rschwartz/eval-queries/assets/gemma_genes.tsv"
+}

@@ -1,0 +1,52 @@
+report_comment: >
+  Query-query pairwise label transfer results.
+
+data_format: 'yaml'
+
+run_modules:
+    - custom_content
+
+custom_data:
+  actual_vs_predicted_subclass:
+    section_name: 'Subclass: actual vs. predicted'
+    description: 'For each true subclass label, counts of predicted subclass labels.'
+    file_format: 'tsv'
+    plot_type: 'bargraph'
+
+  actual_vs_predicted_class:
+    section_name: 'Class: actual vs. predicted'
+    description: 'For each true class label, counts of predicted class labels.'
+    file_format: 'tsv'
+    plot_type: 'bargraph'
+
+  actual_vs_predicted_family:
+    section_name: 'Family: actual vs. predicted'
+    description: 'For each true family label, counts of predicted family labels.'
+    file_format: 'tsv'
+    plot_type: 'bargraph'
+
+  actual_vs_predicted_global:
+    section_name: 'Global: actual vs. predicted'
+    description: 'For each true global label, counts of predicted global labels.'
+    file_format: 'tsv'
+    plot_type: 'bargraph'
+
+sp:
+  actual_vs_predicted_subclass:
+    fn: "*subclass_actual_vs_predicted_mqc.tsv"
+
+  actual_vs_predicted_class:
+    fn: "*class_actual_vs_predicted_mqc.tsv"
+
+  actual_vs_predicted_family:
+    fn: "*family_actual_vs_predicted_mqc.tsv"
+
+  actual_vs_predicted_global:
+    fn: "*global_actual_vs_predicted_mqc.tsv"
+
+custom_content:
+  order:
+    - actual_vs_predicted_subclass
+    - actual_vs_predicted_class
+    - actual_vs_predicted_family
+    - actual_vs_predicted_global
