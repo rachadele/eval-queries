@@ -2,8 +2,8 @@
 
 ### Source Data: 
 mouse "query" datasets: `/space/grp/rschwartz/rschwartz/get_gemma_data.nf/study_names_mouse.txt_author_true_process_samples_true/h5ad/**h5ad`
-relabeling files for label harmonization: `/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline/meta/relabel_mus_musculus/*_relabel.tsv`
-nextflow pipeline for original ref -> query label transfer workflow: `/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline`
+relabeling files for label harmonization: `/space/grp/rschwartz/rschwartz/annotation-benchmark/meta/relabel_mus_musculus/*_relabel.tsv`
+nextflow pipeline for original ref -> query label transfer workflow: `/space/grp/rschwartz/rschwartz/annotation-benchmark`
 
 ### Goal
 
@@ -11,4 +11,4 @@ To establish cross-study concordance between the mouse query datasets, we will p
 
 ### Implementation
 
-look at the way we do label transfer in `/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline`. Specifically, look at workflows/, subworkflows, modules/, main.nf, and bin/. We want to set up the same sort of workflow, but instead of reference -> query, we will do query -> query. We will need to set up a nextflow workflow that takes in the query datasets, performs pairwise label transfer between them, and outputs the results for analysis. we want to enable the same parameters and methods explored in `/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline` (e.g. scVI vs seurat, multiple levels of granularity, variable cutoffs, etc).
+look at the way we do label transfer in `/space/grp/rschwartz/rschwartz/annotation-benchmark`. Specifically, look at workflows/, subworkflows, modules/, main.nf, and bin/. We want to set up the same sort of workflow, but instead of reference -> query, we will do query -> query. We will need to set up a nextflow workflow that takes in the query datasets, performs pairwise label transfer between them, and outputs the results for analysis. we want to enable the same parameters and methods explored in `/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline` (e.g. scVI vs seurat, multiple levels of granularity, variable cutoffs, etc).

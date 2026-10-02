@@ -1,7 +1,7 @@
 process CLASSIFY_ALL {
     label 'process_medium'
     conda '/home/rschwartz/anaconda3/envs/scanpyenv'
-    publishDir "${params.outdir}/${method}/${study_name}/${ref_name}/${query_name}", pattern: "**tsv", mode: 'copy'
+    publishDir "${params.outdir}/${method}/${study_name}/${ref_name}/${query_name}", pattern: "**tsv.gz", mode: 'copy'
     publishDir "${params.outdir}/${method}/${study_name}/${ref_name}/${query_name}", pattern: "confusion/", mode: 'copy'
 
     input:
@@ -10,9 +10,12 @@ process CLASSIFY_ALL {
     val ref_region_mapping
 
     output:
-    tuple val(method), path("**summary.scores.tsv"), emit: f1_score_channel
+    // classify_all.py (shared with annotation-benchmark (score/bin)) writes gzip-compressed
+    // output; this module's declared patterns must match that, same as
+    // annotation-benchmark's own classify_all module already does.
+    tuple val(method), path("**summary.scores.tsv.gz"), emit: f1_score_channel
     path "confusion/"
-    tuple val(method), path("${query_path}"), path("${ref_path}"), path("predicted_meta/**tsv"), emit: predicted_meta_channel
+    tuple val(method), path("${query_path}"), path("${ref_path}"), path("predicted_meta/**tsv.gz"), emit: predicted_meta_channel
 
     script:
     // Handle _processed.h5ad suffix for study-level aggregated files

@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------------------
 */
 
-include { RF_PREDICT   } from "$projectDir/modules/local/rf_predict/main"
+include { SCVI_PREDICT } from "$projectDir/modules/local/rf_predict/main"
 include { CLASSIFY_ALL } from "$projectDir/modules/local/classify_all/main"
 
 workflow SCVI_PIPELINE {
@@ -18,11 +18,15 @@ workflow SCVI_PIPELINE {
 
     main:
     // Run RF prediction on SCVI embeddings
-    RF_PREDICT(pairwise_combos_adata, ref_keys)
+    SCVI_PREDICT(pairwise_combos_adata, ref_keys)
 
-    // Prepare channel for classification
-    adata_probs_channel = RF_PREDICT.out.probs_channel.map { query_path, ref_path, probs_path ->
-        ["scvi", query_path, ref_path, probs_path]
+    // SCVI_PREDICT emits (obs.relabel.tsv, ref_path, rf probs, knn probs).
+    // Score each classifier separately, as annotation-benchmark does.
+    adata_probs_channel = SCVI_PREDICT.out.probs_channel.flatMap { query_path, ref_path, rf_probs, knn_probs ->
+        [
+            ["scvi_rf",  query_path, ref_path, rf_probs],
+            ["scvi_knn", query_path, ref_path, knn_probs]
+        ]
     }
 
     // Classify and compute metrics

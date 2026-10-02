@@ -1,1 +1,1 @@
-/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline/bin/classify_all.py
+/space/grp/rschwartz/rschwartz/annotation-benchmark/score/bin/classify_all.py

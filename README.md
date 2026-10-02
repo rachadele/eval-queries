@@ -1,6 +1,6 @@
 # Pairwise Query-Query Label Transfer Pipeline
 
-Benchmarks cross-study cell type annotation concordance by using each mouse scRNA-seq study as a reference to annotate all other studies. This is a companion to the [`nextflow_eval_pipeline`](../nextflow_eval_pipeline/) (Census reference → query), designed to determine whether annotation failures (e.g. for microglia, OPCs) originate from the reference or from the query data itself.
+Benchmarks cross-study cell type annotation concordance by using each mouse scRNA-seq study as a reference to annotate all other studies. This is a companion to the [`nextflow_eval_pipeline`](../annotation-benchmark/) (Census reference → query), designed to determine whether annotation failures (e.g. for microglia, OPCs) originate from the reference or from the query data itself.
 
 **Hypothesis:** if query→query label transfer performs well, the problem lies with the Census reference. If it also fails pairwise, the issue is with query data concordance with established cell type signatures.
 
@@ -48,7 +48,7 @@ eval-queries/
 │   ├── map_aggregated_query/main.nf         # QC + SCVI projection
 │   ├── classify_all/main.nf                 # Metrics + confusion matrices
 │   ├── run_setup/ -> (symlink)              # Download Census SCVI model
-│   ├── rf_predict/ -> (symlink)             # Random Forest prediction
+│   ├── scvi_predict/ -> (symlink)             # Random Forest prediction
 │   ├── predict_seurat/ -> (symlink)         # Seurat label transfer
 │   └── query_process_seurat/ -> (symlink)   # Convert h5ad → Seurat RDS
 ├── subworkflows/local/
@@ -100,8 +100,8 @@ eval-queries/
 ```json
 {
   "queries_adata": "/space/grp/rschwartz/rschwartz/get_gemma_data.nf/study_names_mouse.txt_author_true_process_samples_true/h5ad/**/*.h5ad",
-  "relabel_q": "/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline/meta/relabel_mus_musculus/*_relabel.tsv",
-  "relabel_r": "/space/grp/rschwartz/rschwartz/eval-queries/meta/census_map_mouse_author.tsv"
+  "relabel_q": "/space/grp/rschwartz/rschwartz/annotation-benchmark/meta/relabel_mus_musculus/*_relabel.tsv",
+  "relabel_r": "/space/grp/rschwartz/rschwartz/annotation-benchmark/meta/census_map_mouse_author.tsv"
 }
 ```
 

@@ -1,1 +1,1 @@
-/space/grp/rschwartz/rschwartz/nextflow_eval_pipeline/bin/predict_seurat.R
+/space/grp/rschwartz/rschwartz/annotation-benchmark/predict/bin/predict_seurat.R

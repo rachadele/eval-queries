@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this pipeline does
 
-Pairwise query-query label transfer benchmarking pipeline. Each of 7 relabeled mouse scRNA-seq studies is used as a reference to annotate all other studies (42 directional pairs). This is a companion to `../nextflow_eval_pipeline/` (Census → query), designed to isolate whether annotation failures originate from the reference or the query data.
+Pairwise query-query label transfer benchmarking pipeline. Each of 7 relabeled mouse scRNA-seq studies is used as a reference to annotate all other studies (42 directional pairs). This is a companion to `../annotation-benchmark/` (Census → query), designed to isolate whether annotation failures originate from the reference or the query data.
 
 ## Running the pipeline
 
@@ -44,9 +44,9 @@ Four levels of granularity evaluated: `subclass → class → family → global`
 
 ### Symlinked components
 
-Many components are symlinked from `../nextflow_eval_pipeline/`:
+Many components are symlinked from `../annotation-benchmark/`:
 - `bin/`: `utils.py`, `predict_scvi.py`, `predict_seurat.R`, `classify_all.py`, `setup.py`, seurat R scripts
-- `modules/local/`: `run_setup`, `rf_predict`, `predict_seurat`, `query_process_seurat`
+- `modules/local/`: `run_setup`, `scvi_predict`, `predict_seurat`, `query_process_seurat`
 - `assets/gemma_genes.tsv`, `meta/census_map_mouse_author.tsv`, `conf/base.config`
 
 Modifying these symlinked files will affect the original pipeline too. Only `aggregate_query.py`, `map_aggregated_query.py`, `plot_f1_heatmap.py`, `plot_predicted_composition.py`, and their corresponding modules/subworkflows are unique to this pipeline.
